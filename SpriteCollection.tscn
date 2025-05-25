@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyocvlqgrjbaj"]
+
+[ext_resource type="Script" uid="uid://ddxp8gpurfily" path="res://SpriteCollection.cs" id="1_ma6th"]
+
+[node name="SpriteCollection" type="Node"]
+script = ExtResource("1_ma6th")
