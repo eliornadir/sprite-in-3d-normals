@@ -1,4 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf5dqwmfupqdt"]
+[gd_scene load_steps=32 format=3 uid="uid://bf5dqwmfupqdt"]
+
+[ext_resource type="PackedScene" uid="uid://2gdxb2wyxq2" path="res://Player.tscn" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://dyocvlqgrjbaj" path="res://SpriteCollection.tscn" id="2_xrxkg"]
+[ext_resource type="Texture2D" uid="uid://bidgs2l3bvoqg" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_0.png" id="3_sqvbp"]
+[ext_resource type="Texture2D" uid="uid://cowybfqiebcmd" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_1.png" id="4_hri7i"]
+[ext_resource type="Texture2D" uid="uid://bk5cwgwporln4" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_2.png" id="5_w3rk5"]
+[ext_resource type="Texture2D" uid="uid://dfj1okaxy7ydd" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_3.png" id="6_5mvff"]
+[ext_resource type="Texture2D" uid="uid://c5elqg1hsdipo" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_4.png" id="7_oye8v"]
+[ext_resource type="Texture2D" uid="uid://cn3kkira8c8vy" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_n_0.png" id="8_40n85"]
+[ext_resource type="Texture2D" uid="uid://c2obws77rt61h" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_n_1.png" id="9_gb15f"]
+[ext_resource type="Texture2D" uid="uid://c6am5lg65rj54" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_n_2.png" id="10_sph85"]
+[ext_resource type="Texture2D" uid="uid://dpd362ilxknj4" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_n_3.png" id="11_o7g6l"]
+[ext_resource type="Texture2D" uid="uid://cqjs7cejring5" path="res://art/sprites/generic_warrior/idle/generic_warrior_idle_n_4.png" id="12_vi5kq"]
+[ext_resource type="Texture2D" uid="uid://cf425xxgos84v" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_0.png" id="13_5mkgo"]
+[ext_resource type="Texture2D" uid="uid://ceyor7s00gyev" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_1.png" id="14_3ccbu"]
+[ext_resource type="Texture2D" uid="uid://dioe06k678psy" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_2.png" id="15_ny7u2"]
+[ext_resource type="Texture2D" uid="uid://dxs5t730w4pn6" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_3.png" id="16_x3yn0"]
+[ext_resource type="Texture2D" uid="uid://dws7l8hvey7ru" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_4.png" id="17_1w2xm"]
+[ext_resource type="Texture2D" uid="uid://cme0uaoym0efj" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_5.png" id="18_gngx1"]
+[ext_resource type="Texture2D" uid="uid://dc7y1d22l5qhh" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_6.png" id="19_jt61w"]
+[ext_resource type="Texture2D" uid="uid://b55duwhqeh8qp" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_n_0.png" id="20_v8qla"]
+[ext_resource type="Texture2D" uid="uid://bu8jl3tw6hdcs" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_n_1.png" id="21_y1tbi"]
+[ext_resource type="Texture2D" uid="uid://dd8ce7qobna0b" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_n_2.png" id="22_c2s76"]
+[ext_resource type="Texture2D" uid="uid://brui08hjr81xh" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_n_3.png" id="23_f4ese"]
+[ext_resource type="Texture2D" uid="uid://df8ophfloyo4o" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_n_4.png" id="24_rchyr"]
+[ext_resource type="Texture2D" uid="uid://o5yct2cfdtef" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_n_5.png" id="25_pljue"]
+[ext_resource type="Texture2D" uid="uid://c6eps003ior5s" path="res://art/sprites/generic_warrior/walk/generic_warrior_walk_n_6.png" id="26_nx4yo"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_7dm0k"]
 height = 5.0
@@ -85,3 +112,23 @@ shadow_enabled = true
 [node name="Light4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 4)
 shadow_enabled = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("Sprites") instance=ExtResource("1_glv2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+Sprites = [NodePath("../SpriteCollections/SpriteCollectionIdle"), NodePath("../SpriteCollections/SpriteCollectionWalk")]
+
+[node name="CameraPivot" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0)
+
+[node name="PlayerCamera" type="Camera3D" parent="Player/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 4)
+
+[node name="SpriteCollections" type="Node" parent="."]
+
+[node name="SpriteCollectionIdle" parent="SpriteCollections" instance=ExtResource("2_xrxkg")]
+AlbedoTextures = [ExtResource("3_sqvbp"), ExtResource("4_hri7i"), ExtResource("5_w3rk5"), ExtResource("6_5mvff"), ExtResource("7_oye8v")]
+NormalTextures = [ExtResource("8_40n85"), ExtResource("9_gb15f"), ExtResource("10_sph85"), ExtResource("11_o7g6l"), ExtResource("12_vi5kq")]
+
+[node name="SpriteCollectionWalk" parent="SpriteCollections" instance=ExtResource("2_xrxkg")]
+AlbedoTextures = [ExtResource("13_5mkgo"), ExtResource("14_3ccbu"), ExtResource("15_ny7u2"), ExtResource("16_x3yn0"), ExtResource("17_1w2xm"), ExtResource("18_gngx1"), ExtResource("19_jt61w")]
+NormalTextures = [ExtResource("20_v8qla"), ExtResource("21_y1tbi"), ExtResource("22_c2s76"), ExtResource("23_f4ese"), ExtResource("24_rchyr"), ExtResource("25_pljue"), ExtResource("26_nx4yo")]

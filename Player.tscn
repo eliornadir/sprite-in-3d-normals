@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://2gdxb2wyxq2"]
+[gd_scene load_steps=3 format=3 uid="uid://2gdxb2wyxq2"]
 
-[node name="Player" type="CharacterBody3D"]
+[ext_resource type="Script" uid="uid://0cxan51li55r" path="res://Player.cs" id="1_3vjad"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chpgb"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("SpriteMeshInstance", "SpriteAnimationPlayer", "SpriteCollisionShape")]
+script = ExtResource("1_3vjad")
+SpriteMeshInstance = NodePath("SpriteMesh")
+SpriteAnimationPlayer = NodePath("SpriteAnimation")
+SpriteCollisionShape = NodePath("SpriteCollisionShape")
+
+[node name="SpriteMesh" type="MeshInstance3D" parent="."]
+
+[node name="SpriteCollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_chpgb")
+
+[node name="SpriteAnimation" type="AnimationPlayer" parent="."]
